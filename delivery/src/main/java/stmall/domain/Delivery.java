@@ -21,7 +21,7 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String orderId;
+    private Long orderId;
 
     private String customerId;
 
@@ -44,13 +44,17 @@ public class Delivery {
     public static void startDelivery(OrderPlaced orderPlaced) {
         //implement business logic here:
 
-        /** Example 1:  new item 
         Delivery delivery = new Delivery();
+        delivery.setOrderId(orderPlaced.getId());
+        delivery.setAddress(orderPlaced.getAddress());
+        delivery.setCustomerId(orderPlaced.getCustomerId());
+        delivery.setItemId(orderPlaced.getItemId());
+        delivery.setQty(orderPlaced.getQty());
+        delivery.setStatus("DELIVERY COMPLETED");
         repository().save(delivery);
 
         DeliveryCompleted deliveryCompleted = new DeliveryCompleted(delivery);
         deliveryCompleted.publishAfterCommit();
-        */
 
         /** Example 2:  finding and process
         

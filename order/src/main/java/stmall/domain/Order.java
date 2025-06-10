@@ -28,7 +28,14 @@ public class Order {
 
     private Integer qty;
 
-    private Integer status;
+    private String status;
+
+    private String address;
+
+    @PrePersist
+    public void onPrePersist() {
+        setStatus("ORDER PLACED");
+    }
 
     @PostPersist
     public void onPostPersist() {
